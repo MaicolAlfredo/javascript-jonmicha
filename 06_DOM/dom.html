@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>DOM</title>
+
+    <style>
+      :root {
+        --yelow-color: #f7df1e;
+        --dark-color: #222;
+      }
+
+      .cards {
+        border: thin solid var(--dark-color);
+        padding: 1rem;
+      }
+
+      .card {
+        display: inline-block;
+        background-color: var(--dark-color);
+        color: var(--yelow-color);
+      }
+
+      .card figcaption {
+        padding: 1rem;
+      }
+
+      .rotate-45 {
+        transform: rotate(45deg);
+      }
+
+      .rotate-135 {
+        transform: rotate(135deg);
+      }
+
+      .opacity-80 {
+        opacity: 0.8;
+      }
+
+      .sepia {
+        filter: sepia(1);
+      }
+
+      .eventos-flujo div {
+        padding: 4rem;
+        font-size: 2rem;
+        text-align: center;
+      }
+
+      .uno {
+        background-color: yellow;
+      }
+      .dos {
+        background-color: gold;
+      }
+      .tres {
+        background-color: lightyellow;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>Manejo del DOM</h3>
+    <p id="que-es">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae doloremque
+      explicabo laudantium, quisquam eius dolores vel quas sequi esse quidem rem
+      impedit hic id quos sint, sapiente at commodi sunt?
+    </p>
+    <nav id="menu">
+      <ul>
+        <li><a href="#">Seccion1</a></li>
+        <li><a href="#">Seccion2</a></li>
+        <li><a href="#">Seccion3</a></li>
+        <li><a href="#">Seccion4</a></li>
+        <li><a href="#">Seccion5</a></li>
+      </ul>
+    </nav>
+    <input type="text" name="nombre" placeholder="Nombre" />
+    <a
+      class="link-dom"
+      href="dom.html"
+      style="background-color: #f7df1f; color: #222"
+      data-description="Document Object Model"
+      >DOM</a
+    >
+    <section class="cards">
+      <figure class="card">
+        <img src="assets/html5logo.png" alt="css" />
+        <figcaption>HTML</figcaption>
+      </figure>
+      <figure class="card">
+        <img src="assets/css.jpg" alt="html" />
+        <figcaption>CSS</figcaption>
+      </figure>
+      <figure class="card">
+        <img src="assets/javascript.png" alt="JavaScript" />
+        <figcaption>JavaScript</figcaption>
+      </figure>
+      <figure class="card">
+        <img src="assets/node.png" alt="node" />
+        <figcaption>Node</figcaption>
+      </figure>
+      <figure class="card">
+        <img src="assets/git.png" alt="git" />
+        <figcaption>Git</figcaption>
+      </figure>
+    </section>
+
+    <template id="template-card">
+      <figure class="card">
+        <img />
+        <figcaption></figcaption>
+      </figure>
+    </template>
+
+    <hr />
+    <br />
+    <h3>Eventos en JavaScript</h3>
+    <h4>Manejadores de Eventos</h4>
+    <!-- <button onclick="alert('hola')">Evento con atributo HTML</button> -->
+    <button onclick="holaMundo()">Evento con atributo HTML</button>
+    <br /><br />
+    <button id="evento-semantico">Evento con manejador semántico</button>
+    <br /><br />
+    <button id="evento-multiple">Evento con manejador múltiple</button>
+    <br /><br />
+    <button id="evento-remover">
+      removiendo eventos con manejadores múltiples
+    </button>
+
+    <br /><br />
+    <h4>Flujo de Eventos</h4>
+    <section class="eventos-flujo">
+      <div class="uno">
+        1
+        <div class="dos">
+          2
+          <div class="tres">
+            3
+            <a href="https://google.com" target="_blank" rel="noopener"
+              >Google</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <br /><br />
+    <h3 style="width: 2000px">Manejo del BOM</h3>
+    <button id="abrir-ventana">Abrir ventana</button>
+    <br /><br />
+    <button id="cerrar-ventana"></button>
+    <br /><br />
+    <button id="imprimir-ventana">Imprimir ventana</button>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+    <script src="dom.js"></script>
+  </body>
+</html>

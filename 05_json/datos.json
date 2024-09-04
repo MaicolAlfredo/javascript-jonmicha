@@ -1,0 +1,11 @@
+{
+    "cadena": "Jon",
+    "numero": 25,
+    "booleano": true,
+    "arreglo": ["ajedrez", "voleibol", "programación"],
+    "objeto": {
+      "twitter": "@jonmircha",
+      "email": "jonmircha@gmail.com",
+    },
+    "nulo": null,
+  };
