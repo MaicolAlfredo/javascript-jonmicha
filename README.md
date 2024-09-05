@@ -86,6 +86,23 @@ El DOM es una interfaz de programación que representa un documento HTML como un
 - `document.write();`
   Este método se utiliza para escribir texto directamente en el documento, pero generalmente no se recomienda para manipular contenido dinámico, ya que puede sobrescribir el contenido existente del documento.
 
+  ### Curso de javascript 62 DOM: Nodos, Elementos y Selectores
+
+Metodos que no se utilizan
+
+```js
+document.getElementsByTagName("li");
+document.getElementsByClassName("card");
+document.getElementsByName("nombre");
+```
+
+han sido remplazado por 2 metodos nuevos
+
+```js
+document.querySelector("#menu");
+document.querySelectorAll(".card");
+```
+
 ## curso de javascript 63 DOM: Atributos y Data-Attributes
 
 Sí, algunos desarrolladores utilizan el símbolo "$" al principio de los nombres de variables para indicar que la variable hace referencia a un elemento del DOM (Document Object Model).
@@ -96,7 +113,7 @@ No es obligatorio y no afecta la funcionalidad del código, pero sirve como una 
 
 ¿Por qué usar noopener?
 
-Cuando se utiliza target="\_blank" para abrir un enlace en una nueva pestaña, la nueva pestaña tiene acceso al objeto window de la página original a través de la propiedad window.opener. Esto puede ser un riesgo de seguridad, ya que la nueva pestaña podría usar JavaScript para manipular la página original.
+Cuando se utiliza `target="\_blank"` para abrir un enlace en una nueva pestaña, la nueva pestaña tiene acceso al objeto window de la página original a través de la propiedad window.opener. Esto puede ser un riesgo de seguridad, ya que la nueva pestaña podría usar JavaScript para manipular la página original.
 
 Al agregar rel="noopener" al enlace, se previene q
 
@@ -109,7 +126,17 @@ Todos los data attributes de un elemento HTML se guardan en una colección JavaS
 
 Son atributos HTML personalizados que comienzan con data-. Se utilizan para almacenar información extra sobre un elemento que no tiene una representación visual directa en la página.
 
-## Curso de javascript 72 DOM: Manejadores de Eventos
+## 64 DOM: Estilos y Variables CSS
+
+Recuerde que los atributos podemos acceder con la notacion del punto y no tanto con el metodo getAttribute, porque `console.log($linkDOM.style)` me va a regresar un objeto de tipo CSSStyleDeclaration donde es un mapa de todas las propiedades CSS validas.Muy importante estan escrita en formato camelCase, recuerden que en CSS el separador es el guion medio pero el guion medio en JS podria representar una resta numerica entonces para convertir todas la propiedades en JS valida a CSS se le quita el guion medio y utilizamos la tecnica de lowerCamelCase.
+
+¿Qué pasa si quisiera con getComputedStyle acceder solamente a una propiedad? pues simplemente acceder al metodo ".getPropertyValue()" y pasarle el nombre de la propiedad que quiero imprimir y recuerden que es un metodo que cuelga de window pues no es necesario crear una instancia de window.
+
+```js
+console.log(getComputedStyle($linkDOM).getPropertyValue("color"));
+```
+
+## 72 DOM: Manejadores de Eventos
 
 Los Eventos
 👉 Es aquel mecanismo que tenemos en JS para poder controlar las acciones del usuario

@@ -62,11 +62,18 @@ console.log($linkDOM.dataset.description);
 //curso de javascript 64 DOM: Estilos y Variables CSS
 
 /* const $linkDOM = document.querySelector(".link-dom");
+
+
+//recuerde que los atributos podemos acceder con la notacion del punto y no tanto con el metodo getAttribute, porque ($linkDOM.style) me va a regresar un objeto de tipo CSSStyleDeclaration donde es un mapa de todas las propiedades CSS validas.Muy importante estan escrita en formato camelCase, recuerden que en CSS el separador es el guion medio pero el guion medio en JS podria representar una resta numerica entonces para convertir todas la propiedades en JS valida a CSS se le quita el guion medio y utilizamos la tecnica de lowerCamelCase.
+
 console.log($linkDOM.style);
 console.log($linkDOM.getAttribute("style"));
 console.log($linkDOM.style.backgroundColor);
 console.log($linkDOM.style.color);
 console.log(window.getComputedStyle($linkDOM));
+
+//¿Qué pasa si quisiera con getComputedStyle acceder solamente a una propiedad? pues simplemente acceder al metodo ".getPropertyValue()" y pasarle el nombre de la propiedad que quiero imprimir y recuerden que es un metodo que cuelga de window pues no es necesario crear una instancia de window.
+
 console.log(getComputedStyle($linkDOM).getPropertyValue("color"));
 
 //¿Cómo puedo establecer un nuevo valor?
