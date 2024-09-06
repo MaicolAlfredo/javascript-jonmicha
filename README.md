@@ -8,6 +8,12 @@
 
 [106 AJAX:Objeto XMLHttpRequest](#curso-de-javascript-106-ajaxobjeto-xmlhttprequest)
 
+[111 API REST Introducción](#javascript-111-api-rest-introducción)
+
+[112 API REST:JSON Server - API falsa local](#javascript-112-api-restjson-server-api-falsa-local)
+
+[113 API REST:Consumo de datos con client REST](#javascript-113api-restconsumo-de-datos-con-client-rest)
+
 ## 60 WEB APIs
 
 API son las siglas de Interfaz de Programación de Aplicaciones.
@@ -262,6 +268,14 @@ Paso a seguir
 4. Finalmente enviar la petición con el metodo send().
 
    `xhr.send() `
+
+## JavaScript 111.API REST Introducción
+## JavaScript 112.API REST:JSON Server - API falsa local
+## JavaScript 113.API REST:Consumo de datos con client REST
+
+
+
+
 
 Get started by customizing your environment (defined in the .idx/dev.nix file) with the tools and IDE extensions you'll need for your project!
 
