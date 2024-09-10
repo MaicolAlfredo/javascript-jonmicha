@@ -49,14 +49,139 @@
         </td>
       </tr>
     </template>
-
+    <!-- 119 API REST CRUD CON AXIOS(1/2) -->
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
     <script>
       const d = document,
         $form = d.querySelector(".crud-form"),
         $table = d.querySelector(".crud-table "),
-        $title=d.querySelector(".crud-title"),
+        $title = d.querySelector(".crud-title"),
         $template = d.getElementById("crud-template").content,
         $fragment = d.createDocumentFragment();
+
+      const getAll = async () => {
+        try {
+          let res = await axios.get("http://localhost:5555/santos"),
+            json = await res.data;
+
+          json.forEach((el) => {
+            $template.queryselector(".name").textContent = el.nombre;
+            $template.queryselector(".contellation").textContent =
+              el.constelacion;
+            $template.queryselector(".edit").dataset.id = el.id;
+            $template.queryselector(".edit").dataset.name = el.name;
+            $template.queryselector(".edit").dataset.constellation =
+              el.constelacion;
+            $template.queryselector(".delete").dataset.id = el.id;
+
+            let $clone = d.importNode($template, true);
+            $fragment.appendChild($clone);
+          });
+        } catch (err) {
+          let message = err.statusTest || "Ocurrio un error";
+          $table.insertAdjacentHTML(
+            "afterend",
+            `<p><b>Error${err.status}:${message} </b></p> `
+          );
+        }
+      };
+
+      d.addEventListener("DOMContentLoaded", getAll);
+
+      //120 API REST CRUD CON AXIOS(2/2)
+      d.addEventListener("submit", async (e) => {
+        if (e.target === submit) {
+          e.preventDefault();
+
+          if (!e.target.id.value) {
+            //Create - POST
+            try {
+              let options = {
+                  method: "POST",
+                  header: {
+                    "Content-Type": "application/json",
+                  },
+                  data: JSON.stringify({
+                    nombre: e.target.nombre.value,
+                    constelacion: e.target.constelacion.value,
+                  }),
+                },
+                res = await axios("http://localhost:5555/santos", options),
+                json = await res.data;
+
+              location.reload();
+            } catch (err) {
+              let message = err.statusTest || "Ocurrio un error";
+              $form.insertAdjacentHTML(
+                "afterend",
+                `<p><b>Error${err.status}:${message} </b></p>`
+              );
+            }
+          } else {
+            //Update - PUT
+            try {
+              let options = {
+                  method: "PUT",
+                  header: {
+                    "Content-Type": "application/json",
+                  },
+                  data: JSON.stringify({
+                    nombre: e.target.nombre.value,
+                    constelacion: e.target.constelacion.value,
+                  }),
+                },
+                res = await axios(
+                  `http://localhost:5555/santos/${e.target.id.value}`,
+                  options
+                ),
+                json = await res.data;
+
+              location.reload();
+            } catch (err) {
+              let message = err.statusTest || "Ocurrio un error";
+              $form.insertAdjacentHTML(
+                "afterend",
+                `<p><b>Error${err.status}:${message} </b></p>`
+              );
+            }
+          }
+        }
+      });
+
+      d.addEventListener("click", async (e) => {
+        if (e.target.matches(".edit")) {
+          $title.textContent = "Editar Santo";
+          $form.nombre.value = e.target.dataset.name;
+          $form.constelacion.value = e.target.dataset.constelation;
+          $form.id.value = e.target.dataset.id;
+        }
+        if (e.target.matches(".delete")) {
+          let isDelete = confirm("Estas seguro de eliminar este elemento?");
+
+          if (isDelete) {
+            //delete - DELETE
+            try {
+              let options = {
+                  method: "DELETE",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                },
+                res = await fetch(
+                  `http://localhost:5555/santos/${e.target.dataset.id}`,
+                  options
+                ),
+                json = await res.json();
+
+              location.reload();
+            } catch (err) {
+              let message = err.statusText || "Ocurrio un error";
+              alert(`Error${err.status}:${message}  `);
+              console.log(err);
+            }
+          }
+        }
+      });
     </script>
   </body>
 </html>

@@ -117,6 +117,8 @@
       };
 
       d.addEventListener("DOMContentLoaded", getAll);
+
+      //118 Javascript CRUD Fetch (2/2)
       d.addEventListener("submit", async (e) => {
         if (e.target === $form) {
           e.preventDefault();
@@ -190,24 +192,23 @@
 
           if (isDelete) {
             //delete - DELETE
-            let options = {
-                method: "DELETE",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-              },
-              res = await fetch(
-                `assets/db.json/santos/${e.target.id.value}`,
-                options
-              ),
-              json = await res.json();
-
-            if (!res.ok)
-              throw { status: res.status, statusText: res.statusText };
-
-            location.reload();
-
             try {
+              let options = {
+                  method: "DELETE",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                },
+                res = await fetch(
+                  `assets/db.json/santos/${e.target.id.value}`,
+                  options
+                ),
+                json = await res.json();
+
+              if (!res.ok)
+                throw { status: res.status, statusText: res.statusText };
+
+              location.reload();
             } catch (err) {
               let message = err.statusText || "Ocurrio un error";
               alert(`Error${err.status}:${message}  `);

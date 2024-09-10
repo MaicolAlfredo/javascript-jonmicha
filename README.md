@@ -4,6 +4,8 @@
 
 [63 Data Attribute](#curso-de-javascript-63-dom-atributos-y-data-attributes)
 
+[68 DOM: Creando Elementos y Fragmentos](#68-dom-creando-elementos-y-fragmentos)
+
 [72 Manejador de Eventos](01_Fundamentos/javascript.md#curso-de-javascript-72-dom-manejadores-de-eventos)
 
 [106 AJAX:Objeto XMLHttpRequest](#curso-de-javascript-106-ajaxobjeto-xmlhttprequest)
@@ -142,6 +144,16 @@ Recuerde que los atributos podemos acceder con la notacion del punto y no tanto 
 console.log(getComputedStyle($linkDOM).getPropertyValue("color"));
 ```
 
+## 68 DOM: Creando Elementos y fragmentos.
+Recuerda que un elemento es una etiqueta HTML.
+El DOM tiene un elemento que se llama ".createElement()" que va a crear un elemento del DOM HTML.
+
+```js
+const $div = document.createElement("div");
+```
+Recuerda que tenemos en el DOM, en la especificación del DOM existe 12 diferentes tipos de nodos, unos de ellos son las etiquetas otros son los nodos de textos.En el ejemplo practico 
+
+
 ## 72 DOM: Manejadores de Eventos
 
 Los Eventos
@@ -253,7 +265,7 @@ recibe es el evento en sí, que lo podemos obtener con la palabra 'event' o en a
 abreviar con la letra 'e
 ```
 
-## Curso de javascript 106: AJAX:Objeto XMLHttpRequest
+## 106: AJAX:Objeto XMLHttpRequest
 
 Paso a seguir
 
@@ -269,13 +281,17 @@ Paso a seguir
 
    `xhr.send() `
 
-## JavaScript 111.API REST Introducción
-## JavaScript 112.API REST:JSON Server - API falsa local
-## JavaScript 113.API REST:Consumo de datos con client REST
+## 111.API REST Introducción
 
+## 112.API REST:JSON Server - API falsa local
 
+## 113.API REST:Consumo de datos con client REST
 
+## 118:API REST CRUD con Fetch(2/2)
 
+## 119:API REST CRUD con Axios(1/2)
+
+## 120:API REST CRUD con Axios(2/2)
 
 Get started by customizing your environment (defined in the .idx/dev.nix file) with the tools and IDE extensions you'll need for your project!
 
