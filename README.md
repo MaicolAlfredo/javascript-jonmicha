@@ -293,6 +293,25 @@ Paso a seguir
 
 ## 120:API REST CRUD con Axios(2/2)
 
+## 145:SPA Estructura de Proyecto(assets,helpers,components)
+
+## 146:SPA Helper de conexión a API REST 
+
+## 147:SPA Helper de peticiones AJAX
+
+## 148:SPA Primeros componentes de UI
+
+## 149:SPA Componente Header
+
+## 150:SPA Renderizado Dinámico
+
+## 151:SPA Enrutamiento
+
+## 152:SPA Refactorización de la App.Enrutamiento Asíncrono.
+
+## 153:SPA Vista de Post Actual 
+
+
 Get started by customizing your environment (defined in the .idx/dev.nix file) with the tools and IDE extensions you'll need for your project!
 
 Learn more at https://developers.google.com/idx/guides/customize-idx-env
