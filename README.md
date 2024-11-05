@@ -3,6 +3,8 @@
 
 [61 DOM Introducción](#61-dom-introducción)
 
+[62 Nodos, elementos y Selectores](#62-dom-nodos-elementos-y-selectores)
+
 [63 Data Attribute](#curso-de-javascript-63-dom-atributos-y-data-attributes)
 
 [68 DOM: Creando Elementos y Fragmentos](#68-dom-creando-elementos-y-fragmentos)
@@ -87,8 +89,10 @@ El DOM es una interfaz de programación que representa un documento HTML como un
   Imprime el texto actualmente seleccionado dentro del documento en la consola.
 - `document.write();`
   Este método se utiliza para escribir texto directamente en el documento, pero generalmente no se recomienda para manipular contenido dinámico, ya que puede sobrescribir el contenido existente del documento.
+  
+[DOM](#dom)
 
-## Curso de javascript 62 DOM: Nodos, Elementos y Selectores
+## 62 DOM Nodos, Elementos y Selectores
 
 ```html
 <h3>Manejo del DOM</h3>
@@ -139,29 +143,111 @@ document.querySelectorAll("a").forEach((el) => console.log(el));
 
 Para trabajar con los elementos seleccionados, por ejemplo, podemos recorrer una lista de nodos y realizar operaciones en cada uno de ellos. Además, más adelante exploraremos los métodos de selección y las propiedades de CSS para poder manipular y estilizar estos elementos.
 
+[DOM](#dom)
+
 ## curso de javascript 63 DOM: Atributos y Data-Attributes
 
 Sí, algunos desarrolladores utilizan el símbolo "$" al principio de los nombres de variables para indicar que la variable hace referencia a un elemento del DOM (Document Object Model).
 
-No es obligatorio y no afecta la funcionalidad del código, pero sirve como una convención para mejorar la legibilidad y organización. De esta manera, al leer el código, se puede identificar rápidamente qué variables almacenan elementos del DOM.
+Vamos a ver a cómo podemos interactuar con los atributos de nuestra etiquetas HTML. RECUERDEN que "type", "href", "src", "charset" son atributos que tiene las etiquetas HTML. A partir de HTML 5 tambien el estandar nos permite crear nuestro propios atributos que es lo que se conoce como "data-atribute". Lo unico que nos pide el estándar HTML para crear esto nuevos data-atribute es que empiece con la palabra data y el guion medio. 
 
-`const $linkDOM = document.querySelector(".link-dom");`
+```js
+console.log(document.documentElement.lang);
+```
 
-¿Por qué usar noopener?
+`document.documentElement` : accede al elemento <html> del DOM, que es el elemento raíz del documento HTML. `.lang` obtiene el valor del atributo lang de la etiqueta <html>, que indica el lenguaje del documento. 
 
-Cuando se utiliza `target="\_blank"` para abrir un enlace en una nueva pestaña, la nueva pestaña tiene acceso al objeto window de la página original a través de la propiedad window.opener. Esto puede ser un riesgo de seguridad, ya que la nueva pestaña podría usar JavaScript para manipular la página original.
+Tanto document.documentElement.lang como document.documentElement.getAttribute("lang") pueden devolver el mismo valor en algunos casos, pero hay una diferencia clave en cómo funcionan. 
 
-Al agregar rel="noopener" al enlace, se previene q
+`document.documentElement.lang`: 
 
-`$linkDOM.setAttribute("rel", "noopener");`
+Es una propiedad de JavaScript que refleja el atributo lang del elemento <html>. 
 
-**Data-Attributes**
-Todos los data attributes de un elemento HTML se guardan en una colección JavaScript llamada dataset.
+Si el atributo lang está presente, devolverá su valor. Si el atributo lang no está explícitamente establecido, la propiedad podría devolver un valor predeterminado o una cadena vacía. 
 
-¿Qué son los data attributes?
+Nota: Para ciertos atributos (como lang), el navegador podría manejar un valor predeterminado en caso de que no se defina. 
 
-Son atributos HTML personalizados que comienzan con data-. Se utilizan para almacenar información extra sobre un elemento que no tiene una representación visual directa en la página.
+`document.documentElement.getAttribute("lang")`: 
 
+Es un método que obtiene el valor exacto del atributo lang en el HTML. 
+
+Si el atributo lang no está definido en el elemento <html>, este método devolverá null, a diferencia de la propiedad .lang, que podría devolver una cadena vacía. 
+
+### Diferencia en Enlaces (`<a>`) u Otros Atributos 
+
+La diferencia entre la propiedad y el método se nota más en otros elementos, como los enlaces (<a>), que pueden tener atributos como href o target. 
+```html
+<a href="/pagina" target="_blank">Visitar página</a>
+```
+1. Con la propiedad .href: 
+```js
+console.log(document.querySelector("a").href);   
+
+// Devuelve "http://tu-dominio.com/pagina" 
+```
+La propiedad .href te da el valor absoluto completo de la URL (resuelto por el navegador), incluso si solo especificaste una ruta relativa en el HTML. 
+
+ 
+
+2. Con getAttribute("href"): 
+```js
+console.log(document.querySelector("a").getAttribute("href"));   
+
+// Devuelve "/pagina" 
+```
+El método getAttribute("href") te da el valor exacto que aparece en el atributo href en el HTML, sin resolverlo a una URL absoluta. 
+
+¿cómo podemos establecer un nuevo valor? 
+
+Puedes establecer un nuevo valor para el atributo lang usando la notación del punto 
+```js
+document.documentElement.lang="en";
+```
+Cuando haces esto, estás modificando la propiedad lang del elemento <html>, lo que actualiza el atributo lang en el DOM. Esto es equivalente a cambiar manualmente el valor del atributo lang en la etiqueta <html> dentro del código HTML. 
+
+Alternativa usando setAttribute() 
+
+La alternativa a la notación del punto para modificar un atributo en un elemento HTML es el método setAttribute(), que te permite establecer el valor de cualquier atributo del elemento, sin importar si ese atributo tiene una propiedad reflejada en el DOM o no. 
+
+```js
+element.setAttribute(nombreAtributo,valorAtributo)
+```
+* `nombreAtributo`: Es una cadena que representa el nombre del atributo que deseas modificar o agregar.
+* ``valorAtributo`: Es el nuevo valor que deseas asignar a ese atributo.
+
+Ejemplo para modificar lang con setAttribute(): 
+
+Si quieres cambiar el atributo lang del elemento <html>, podrías usar este código: 
+```js
+document.documentElement.setAttribute("lang","en");
+```
+Esto equivale a 
+```js
+document.documentElement.lang="en";
+```
+### verificar si un atributo existe 
+
+En JavaScript, puedes verificar si un atributo existe en un elemento utilizando el método hasAttribute(). Este método devuelve true si el elemento tiene el atributo especificado y false si no lo tiene. 
+
+Sintaxis: 
+```js
+element.hasAttribute(nombreAtributo);
+```
+REMOVER UN ATRIBUTO 
+
+Puedes remover un atributo de un elemento HTML utilizando el método removeAttribute(). Este método elimina completamente el atributo especificado del elemento, dejando al elemento sin ese atributo. 
+
+Sintaxis: 
+```js
+element.removeAttribute(nombreAtributo);
+```
+### Manipulación de Atributos en JavaScript
+Además de los atributos estándar, HTML5 nos permite agregar atributos personalizados, conocidos como data-atributos. Estos deben comenzar con `data-` seguido del nombre del atributo, como `data-descriptio`n o `data-id`. Los data-atributos son útiles para almacenar información adicional en los elementos HTML sin afectar su presentación o funcionalidad básica.
+
+Accediendo y Modificando Data-Atributos con dataset
+JavaScript ofrece la propiedad dataset para acceder y manipular los data-atributos de un elemento. dataset convierte cada data-atributo en una propiedad de JavaScript eliminando el prefijo data- y utilizando notación camelCase para los nombres compuestos.
+
+Por ejemplo, si tienes el atributo `data-description`, en JavaScript será accesible como `element.dataset.description`.
 ## 64 DOM: Estilos y Variables CSS
 
 Recuerde que los atributos podemos acceder con la notacion del punto y no tanto con el metodo getAttribute, porque `console.log($linkDOM.style)` me va a regresar un objeto de tipo CSSStyleDeclaration donde es un mapa de todas las propiedades CSS validas.Muy importante estan escrita en formato camelCase, recuerden que en CSS el separador es el guion medio pero el guion medio en JS podria representar una resta numerica entonces para convertir todas la propiedades en JS valida a CSS se le quita el guion medio y utilizamos la tecnica de lowerCamelCase.
@@ -171,6 +257,8 @@ Recuerde que los atributos podemos acceder con la notacion del punto y no tanto 
 ```js
 console.log(getComputedStyle($linkDOM).getPropertyValue("color"));
 ```
+
+
 
 ## 68 DOM: Creando Elementos y fragmentos.
 Recuerda que un elemento es una etiqueta HTML.
