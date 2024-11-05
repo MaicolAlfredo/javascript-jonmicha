@@ -1,3 +1,4 @@
+## DOM
 [60 Web APIs](#60-web-apis)
 
 [61 DOM Introducción](#61-dom-introducción)
@@ -17,48 +18,41 @@
 [113 API REST:Consumo de datos con client REST](#javascript-113api-restconsumo-de-datos-con-client-rest)
 
 ## 60 WEB APIs
+El DOM, que es la sigla de Document Object Model (Modelo de Objetos del Documento), es esencial. Me gustaría aclarar que no me gusta pronunciarlo como API (Interfaz de Programación de Aplicaciones) porque en este caso el DOM se refiere a una serie de objetos y mecanismos implementados en el lenguaje para interactuar con el navegador, como es la estructura del documento HTML.
 
-API son las siglas de Interfaz de Programación de Aplicaciones.
-En JavaScript, las APIs proporcionan una interfaz para que los desarrolladores interactúen con las diversas funcionalidades y objetos que ofrece el navegador. Estas APIs exponen una serie de objetos y métodos que permiten:
+Esto incluye el árbol del DOM y el control de la ventana del navegador, como la barra de direcciones, el tamaño y algunas otras características que el navegador nos puede proporcionar, como el sistema operativo en el que está el usuario o la ubicación geográfica. Esto vendría a ser el Browser Object Model (BOM).
 
-- Manipular el DOM (Document Object Model): Acceder y modificar la estructura, el estilo y el contenido de un documento HTML. Esto incluye agregar, eliminar y modificar elementos HTML, así como manejar eventos del usuario.
-- Controlar la ventana del navegador: Modificar el tamaño, la posición, la barra de direcciones y otras características de la ventana del navegador.
-- Acceder a información del sistema: Obtener detalles sobre el sistema operativo, la ubicación geográfica del usuario, la resolución de pantalla y otros datos del entorno.
-- Realizar operaciones de red: Hacer solicitudes HTTP para comunicarse con servidores y obtener datos.
-- Utilizar funcionalidades del navegador: Acceder a funciones como almacenamiento local, historial de navegación, web sockets y muchas más.
+Recientemente, ha surgido una nueva definición para interactuar con CSS, conocido como CSS Object Model (CSSOM), que consiste en un conjunto de objetos, métodos e interfaces que permiten interactuar con CSS a través de JavaScript. A partir de estos tres principales (DOM, BOM y CSSOM), hay una infinidad de APIs que nos sirven para prácticamente cualquier cosa, especialmente para el manejo de eventos, formularios, y el consumo de datos asíncronos con AJAX y Fetch.
 
-**DOM:Document Object Model**
+Además, existe un objeto que nos controla el historial, el almacenamiento en la web y la ubicación del usuario: window.location. También está la API de IndexedDB, que es una pequeña base de datos que se guarda en el navegador, y el elemento `<canvas>`, que se utiliza para dibujar, así como matchMedia, que controla las media queries de CSS, pero en JavaScript.
 
-El DOM (Document Object Model) es una parte fundamental de JavaScript que nos permite interactuar con el contenido de una página web.El DOM está organizado en una jerarquía de nodos. Los nodos pueden ser de diferentes tipos:
+la importancia del DOM. Como se muestra en la documentación oficial de Mozilla, el DOM es la representación de los documentos HTML y XML para trabajar con JavaScript.
 
-- Elemento: Representa un elemento HTML (por ejemplo, `<div>`, `<p>`, `<button>`).
-- Atributo: Representa un atributo de un elemento (por ejemplo, id, class).
-- Texto: Representa el texto contenido dentro de un elemento.
-- Comentario: Representa un comentario en el código HTML.
+Es muy importante recordar que el DOM es una interfaz estandarizada, pero su enfoque se limita al control de los nodos. Recuerda que HTML es un lenguaje de marcado, y cada etiqueta, representa un elemento que es un nodo del árbol del DOM.
 
-**¿Para qué sirve el DOM?**
+El DOM es la API que tiene JavaScript en la web para manipular el código HTML y, de manera similar, el CSSOM se deriva del DOM, pero se enfoca en manipular CSS. Por ejemplo, en el CSSOM, puedes controlar eventos de animación y gestionar cómo se comportan los elementos en pantalla.
 
-- Crear contenido dinámico: Puedes añadir, eliminar o modificar elementos HTML en tiempo real, lo que permite crear páginas web más interactivas y dinámicas.
-- Cambiar estilos: Puedes aplicar o modificar estilos CSS a los elementos, cambiando su apariencia visual.
-- Manejar eventos: Puedes agregar eventos a los elementos (como clics, sobrevuelos, etc.) y ejecutar código cuando se produzcan estos eventos.
-- Validar formularios: Puedes verificar que los datos ingresados por el usuario sean correctos antes de enviar un formulario.
-- Crear animaciones: Puedes crear animaciones suaves y fluidas utilizando JavaScript y el DOM.
+Ahora, pasemos a trabajar en algunas herramientas para aplicar dinámicamente estilos a nuestras interfaces web. El DOM y el CSSOM están relacionados: el DOM manipula HTML mediante JavaScript y CSSOM manipula CSS de la misma manera.
 
-**EL objecto global es window**
+El BOM, o Browser Object Model, aunque no se considera una API estándar, ha evolucionado. Cada navegador tiene su propia forma de manejar ciertas características, pero en los últimos años, especialmente desde 2012-2013, los navegadores han empezado a implementar características similares y estandarizadas.
 
-El objeto global en JavaScript es, window en un entorno de navegador.
+En los primeros años de este milenio, durante la llamada "guerra de los navegadores", Internet Explorer dominaba el mercado y su funcionamiento era muy diferente al de otros navegadores, lo que generaba problemas de compatibilidad. Por eso, jQuery ganó popularidad, ya que abstraía esas diferencias y proporcionaba un método unificado para realizar peticiones asíncronas.
 
-¿Qué significa esto?
+Hoy en día, con los avances de JavaScript y las estandarizaciones en los navegadores, ya no es necesario recurrir a jQuery. A medida que avanzamos en el curso, veremos cómo utilizar el HTML y el JavaScript de manera efectiva. Vamos a seguir trabajando en la consola, aunque también comenzaremos a utilizar el código HTML.
 
-- Contexto global: Todos los objetos, variables y funciones que se declaran a nivel global (es decir, fuera de cualquier función o bloque de código) se adjuntan automáticamente al objeto window.
-- Acceso universal: Esto significa que puedes acceder a cualquier variable o función global simplemente escribiendo su nombre, sin necesidad de prefijarlo con window. Por ejemplo, si declaras `let miVariable = "Hola";`, puedes acceder a ella como miVariable o window.miVariable.
-- Ventana del navegador: El objeto window representa la ventana del navegador en la que se ejecuta el código JavaScript. Proporciona una amplia gama de propiedades y métodos para interactuar con la ventana, como window.location, window.alert(), window.open(), entre otros.
+Recuerda que el objeto global en los navegadores es window, y dentro de él encontramos otros objetos importantes, como navigator, que controla características del entorno del usuario. Por ejemplo, navigator te permite detectar el idioma del documento HTML, la plataforma (sistema operativo) y el userAgent, que proporciona información sobre el navegador que está utilizando el usuario.
 
-**¿Qué es `document`?**
+Por último, el objeto history controla el historial de navegación, y location gestiona las partes de la URL. Así que asegúrate de entender cómo todo cuelga del objeto window, que es el contexto global de JavaScript.
 
-- Representación del documento HTML: En JavaScript, document es un objeto global que representa el documento HTML que se está cargando en el navegador.
-- Acceso al DOM: A través de document, podemos acceder y manipular todos los elementos de la página HTML, como si fuera un árbol de nodos.
+Vamos a ver cómo se relacionan estas partes: DOM, BOM y CSSOM. A pesar de que el BOM no es considerado un estándar, la integración entre navegadores ha mejorado significativamente. Esto significa que las APIs que interactúan con el HTML, CSS y otras funciones del navegador son cada vez más efectivas.
 
+Además, existen APIs que permiten activar funcionalidades como la síntesis de voz, que te permite enviar comandos de voz a tu computadora mediante JavaScript. Por ejemplo, puedo crear una función llamada hablar que utiliza la API de síntesis de voz para hacer que la computadora lea un texto en voz alta.
+
+Voy a crear una función que recibirá un texto y utilizará SpeechSynthesis para convertirlo en voz. Por ejemplo, puedo declarar una variable con el texto que quiero que se lea en voz alta: "Hola, soy tu amigo y docente digital, Jonathan Marcha". Cuando ejecute esta función, mi computadora leerá el texto en voz alta.
+
+Existen muchas APIs para controlar diversas funcionalidades, como la batería de dispositivos móviles, la ubicación geográfica, y mucho más. Así que a medida que avanzamos, verás que el mundo de las APIs web es vasto y emocionante, con muchas nuevas características implementándose constantemente.
+
+[DOM](#dom)
 ## 61 DOM Introducción
 
 El DOM es una interfaz de programación que representa un documento HTML como un árbol de nodos. Cada nodo representa un elemento, atributo, texto o comentario dentro del documento. El objeto document en JavaScript nos da acceso a la raíz de este árbol.
@@ -94,22 +88,56 @@ El DOM es una interfaz de programación que representa un documento HTML como un
 - `document.write();`
   Este método se utiliza para escribir texto directamente en el documento, pero generalmente no se recomienda para manipular contenido dinámico, ya que puede sobrescribir el contenido existente del documento.
 
-  ### Curso de javascript 62 DOM: Nodos, Elementos y Selectores
+## Curso de javascript 62 DOM: Nodos, Elementos y Selectores
 
-Metodos que no se utilizan
+```html
+<h3>Manejo del DOM</h3>
+<p id="que-es">
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente placeat
+  officiis tempore quidem qui sequi, omnis pariatur cum aperiam porro nobis
+  nulla quaerat, et animi itaque laudantium quas nesciunt quibusdam!
+</p>
+<nav id="menu">
+  <ul>
+    <li><a href="#">Sección 1</a></li>
+    <li><a href="#">Sección 2</a></li>
+    <li><a href="#">Sección 3</a></li>
+    <li><a href="#">Sección 4</a></li>
+    <li><a href="#">Sección 5</a></li>
+  </ul>
+</nav>
+<input type="text" name="nombre" placeholder="Nombre" />
+<a class="link-dom" href="dom.html">DOM</a>
+<section class="cards">
+  <figure class="card">
+    <img src="https://picsum.photos/200/300" alt="Tech" />
+    <figcaption>Tech</figcaption>
+  </figure>
+</section>
+```
+En el archivo JavaScript, comenzaremos a ver cómo seleccionar nodos. Es importante recordar que un nodo representa cada elemento dentro del DOM. Existen distintos tipos de nodos, como nodos de elemento (las etiquetas HTML) y nodos de texto (el contenido dentro de las etiquetas). Para trabajar con HTML, nos interesan principalmente los nodos de tipo "elemento" y "texto".
+
+Existen varias maneras de seleccionar elementos en el DOM usando JavaScript. Algunos métodos tradicionales incluyen:
+
+- `console.log(document.getElementsByTagName())`: selecciona todos los elementos de un tipo específico (como `<li>`, `<p>`, etc.).
+- `console.log(document.getElementsByClassName())`: selecciona todos los elementos con una clase específica.
+- `console.log(document.getElementsByName())`: selecciona elementos con un atributo name específico (principalmente útil en formularios).
+- `console.log(document.getElementById())`: selecciona un único elemento por su identificador único id.
+
+Aunque estos métodos siguen siendo útiles, hoy en día solemos utilizar `querySelector()` y `querySelectorAll()`, que son más flexibles.
+
+- `querySelector()` selecciona el primer elemento que coincide con un selector CSS.
+- `querySelectorAll()` selecciona todos los elementos que coinciden con un selector CSS, devolviendo una NodeList.
+
+Aunque `querySelector` es un poco más lento que `getElementById()` debido a su flexibilidad, se ha convertido en una práctica común porque puede manejar selectores CSS complejos. Para obtener, por ejemplo, todos los enlaces en una página, puedes usar `document.querySelectorAll("a")`.
+
+Las `NodeLists` y las `HTMLCollections` se parecen a los arreglos, ya que tienen propiedades como `length`, pero no comparten todos los métodos de los arreglos. Sin embargo, podemos usar métodos como `forEach()` en las `NodeLists`.
 
 ```js
-document.getElementsByTagName("li");
-document.getElementsByClassName("card");
-document.getElementsByName("nombre");
+document.querySelectorAll("a").forEach((el) => console.log(el));
 ```
 
-han sido remplazado por 2 metodos nuevos
-
-```js
-document.querySelector("#menu");
-document.querySelectorAll(".card");
-```
+Para trabajar con los elementos seleccionados, por ejemplo, podemos recorrer una lista de nodos y realizar operaciones en cada uno de ellos. Además, más adelante exploraremos los métodos de selección y las propiedades de CSS para poder manipular y estilizar estos elementos.
 
 ## curso de javascript 63 DOM: Atributos y Data-Attributes
 
